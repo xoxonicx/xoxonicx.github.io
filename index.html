@@ -87,7 +87,7 @@
             margin-bottom: 40px;
             padding: 40px;
             border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 40px;
             backdrop-filter: blur(10px);
         }
 
@@ -277,9 +277,9 @@
     <div class="container">
         <!-- Header -->
         <header>
-            <img src="profile.jpg" alt="Profile" class="profile-img">
-            <h1> Nica Mae Villanueva </h1>
-            <p class="subtitle"> Diploma in Information Technology </p>
+            <img src="Images/nica.jpg" alt="Profile" class="profile-img">
+            <h1>Nica Mae Villanueva</h1>
+            <p class="subtitle">Diploma in Information Technology</p>
             <div class="social-links">
                 <a href="https://github.com/xoxonicx" target="_blank">GitHub</a>
                 <a href="https://www.facebook.com/nicamae.villanueva.22/" target="_blank">Facebook</a>
@@ -317,14 +317,10 @@
             <h2>Featured Projects</h2>
             <div class="projects-grid">
                 <div class="project-card">
-                    <img src="TechCare.jpg" alt="Project 1" class="project-img" />
+                    <img src="Images/TechCare.jpg" alt="Project 1" class="project-img" />
                     <div class="project-content">
                         <h3 class="project-title">E-Commerce Platform</h3>
                         <p class="project-tech">React • Node.js • MongoDB • Stripe</p>
-                        <div class="project-links">
-                            <a href="https://github.com/yourusername/project1" target="_blank">Code</a>
-                            <a href="https://project1-demo.com" target="_blank">Live Demo</a>
-                        </div>
                     </div>
                 </div>
                 <div class="project-card">
@@ -332,21 +328,13 @@
                     <div class="project-content">
                         <h3 class="project-title">Task Management App</h3>
                         <p class="project-tech">Next.js • Firebase • Tailwind CSS</p>
-                        <div class="project-links">
-                            <a href="https://github.com/yourusername/project2" target="_blank">Code</a>
-                            <a href="https://project2-demo.com" target="_blank">Live Demo</a>
-                        </div>
                     </div>
                 </div>
                 <div class="project-card">
-                    <img src="https://s3-alpha.figma.com/hub/file/6314450712/24495bd2-dc9e-47f0-a1fd-f755ac79afa8-cover.png" alt="Project 3" class="project-img" />
+                    <img src="https://cdn.dribbble.com/userupload/28479055/file/original-3ece5ed339f0823e288aafb9ed6a99de.png?resize=1600x1200" alt="Project 3" class="project-img" />
                     <div class="project-content">
                         <h3 class="project-title">Weather Dashboard</h3>
                         <p class="project-tech">Vue.js • OpenWeather API • Chart.js</p>
-                        <div class="project-links">
-                            <a href="https://github.com/yourusername/project3" target="_blank">Code</a>
-                            <a href="https://project3-demo.com" target="_blank">Live Demo</a>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -390,6 +378,7 @@
     </footer>
 
     <script>
+        // Dynamically set current year
         document.getElementById('year').textContent = new Date().getFullYear();
     </script>
 </body>
