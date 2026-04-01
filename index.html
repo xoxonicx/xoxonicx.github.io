@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nica Mae Villanueva - IT Student & Developer</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            /* Pink Aesthetic Palette */
+            --primary-accent: #ec4899;    /* Light Pink */
+            --secondary-accent: #f472b6;  /* Soft Pink */
+            --hover-accent: #db2777;      /* Deeper Pink */
+
+            /* Light Mode Colors */
+            --background: #fdf2f8;        /* Very Light Pink background */
+            --surface: #ffffff;           /* Pure White for cards */
+            --surface-hover: #fce7f3;    /* Light pink hover */
+            
+            /* Text Colors */
+            --text-primary: #0f172a;      /* Slate Dark for titles */
+            --text-secondary: #475569;    /* Slate Gray for descriptions */
+            --text-on-accent: #ffffff;    /* White text on buttons */
+
+            /* UI Elements */
+            --border: #f3e8f0;            /* Soft pink border */
+            --shadow-lg: 0 10px 15px -3px rgb(236 72 153 / 0.08), 0 4px 6px -4px rgb(236 72 153 / 0.08);
+            --radius: 16px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--background);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        /* Header / Hero Section */
+        .hero {
+            text-align: center;
+            background: var(--surface);
+            padding: 4rem 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 4rem;
+            border: 1px solid var(--border);
+        }
+
+        .profile-img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            /* FIX: Para kahit hindi square ang original photo, magiging bilog pa rin at hindi pisa */
+            object-fit: cover; 
+            margin: 0 auto 2rem;
+            box-shadow: var(--shadow-lg);
+            border: 4px solid var(--surface); 
+            outline: 2px solid var(--primary-accent); /* Pink outline */
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--primary-accent), var(--secondary-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero .subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary); 
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            background: var(--surface);
+        }
+
+        .social-links a:hover {
+            border-color: var(--primary-accent);
+            background: var(--primary-accent);
+            color: var(--text-on-accent);
+            transform: translateY(-2px);
+        }
+
+        .social-links a i {
+            color: var(--primary-accent); /* Pink icons */
+        }
+
+        .social-links a:hover i {
+            color: var(--text-on-accent);
+        }
+
+        /* Sections */
+        section {
+            background: var(--surface);
+            margin-bottom: 3rem;
+            padding: 3rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border);
+        }
+
+        section h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: var(--text-primary);
+            position: relative;
+        }
+
+        section h2::after {
+            content: none; 
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .skill-card {
+            text-align: center;
+            padding: 2rem 1.5rem;
+            border-radius: var(--radius);
+            background: var(--background);
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--primary-accent);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-8px);
+            background: var(--surface);
+            border-color: var(--primary-accent);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .skill-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .skill-card p {
+            color: var(--primary-accent); /* Pink proficiency */
+            font-weight: 600;
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border);
+            background: var(--surface);
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary-accent);
+        }
+
+        .project-img {
+            width: 100%;
+            height: 220px; /* Pantay-pantay na height para sa lahat ng projects */
+            /* FIX: Ang kahit anong aspect ratio ng image ay mag-aadjust para mapuno yung 220px height nang hindi nade-deform */
+            object-fit: cover; 
+            transition: transform 0.4s ease;
+            border-bottom: 1px solid var(--border);
+            filter: saturate(0.8);
+        }
+
+        .project-card:hover .project-img {
+            transform: scale(1.05);
+            filter: saturate(1.1);
+        }
+
+        .project-content {
+            padding: 1.75rem;
+        }
+
+        .project-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .project-tech {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .project-tech i {
+            color: var(--primary-accent);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .project-links a {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            background: var(--primary-accent);
+            color: var(--text-on-accent);
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .project-links a:hover {
+            background: var(--hover-accent);
+            transform: translateY(-2px);
+        }
+
+        /* Timeline - UPDATED TO VERTICAL LIST */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px; /* Line moved to the left side */
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border);
+        }
+
+        .timeline-item {
+            margin-bottom: 3rem;
+            position: relative;
+            display: flex;
+            justify-content: flex-start !important; /* Always start from left */
+        }
+
+        .timeline-content {
+            background: var(--background);
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-lg);
+            width: calc(100% - 60px); /* Adjust width to fit the list style */
+            margin-left: 60px; /* Space for the line and dots */
+            position: relative;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            border-color: var(--primary-accent);
+            transform: translateX(5px);
+        }
+
+        .timeline-dot {
+            width: 16px;
+            height: 16px;
+            background: var(--primary-accent);
+            border-radius: 50%;
+            position: absolute;
+            left: 20px; /* Aligned with the left vertical line */
+            top: 2rem;
+            transform: translateX(-50%);
+            z-index: 1;
+            box-shadow: 0 0 0 4px var(--surface);
+        }
+
+        .timeline-content h3 {
+            color: var(--text-primary);
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content p:first-of-type {
+            color: var(--primary-accent);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-content p:last-of-type {
+            color: var(--text-secondary);
+        }
+
+        /* Centered Footer Styling */
+        footer.main-footer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            padding: 3rem 1rem;
+            margin-top: 1rem;
+            color: var(--text-secondary);
+            text-align: center;
+        }
+
+        footer.main-footer p {
+            margin: 0;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container { padding: 1rem; }
+            .hero { padding: 2rem 1.5rem; margin-bottom: 2rem; }
+            section { padding: 2rem 1.5rem; margin-bottom: 2rem; }
+            .social-links { flex-direction: column; align-items: center; }
+            .projects-grid { grid-template-columns: 1fr; }
+            .timeline-content {
+                width: calc(100% - 40px);
+                margin-left: 40px;
+            }
+            .timeline::before, .timeline-dot { left: 10px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="hero">
+            <img src="images/Profilenica.png" alt="Nica Mae Villanueva" class="profile-img">
+            <p class="subtitle">Diploma in Information Technology | 2nd Year IT Student</p>
+            <div class="social-links">
+                <a href="https://github.com/xoxonicx" target="_blank" rel="noopener">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+                <a href="https://www.facebook.com/nicamae.villanueva.22/" target="_blank" rel="noopener">
+                    <i class="fab fa-facebook"></i> Facebook
+                </a>
+                <a href="https://mail.google.com/mail/u/0/#inbox?compose=new" target="_blank" rel="noopener">
+                    <i class="fas fa-envelope"></i> Email
+                </a>
+                <a href="https://www.instagram.com/" target="_blank" rel="noopener">
+                    <i class="fab fa-instagram"></i> Instagram
+                </a>
+            </div>
+        </header>
+
+        <section id="about">
+            <h2>About Me</h2>
+            <p style="text-align: center; font-size: 1.125rem; max-width: 700px; margin: 0 auto; color: var(--text-secondary);">
+                Passion 2nd-year IT student specializing in web and software development. 
+                Currently learning modern technologies and building projects to enhance my skills in full-stack development.
+            </p>
+        </section>
+
+        <section id="skills">
+            <h2>Skills & Technologies</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>HTML/CSS</h3>
+                    <p>Advanced</p>
+                </div>
+                <div class="skill-card">
+                    <h3>JavaScript</h3>
+                    <p>Advanced</p>
+                </div>
+                <div class="skill-card">
+                    <h3>C++</h3>
+                    <p>Advanced</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Python</h3>
+                    <p>Intermediate</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Java</h3>
+                    <p>Intermediate</p>
+                </div>
+                <div class="skill-card">
+                    <h3>SQL</h3>
+                    <p>Intermediate</p>
+                </div>
+                <div class="skill-card">
+                    <h3>React Native</h3>
+                    <p>Mobile Development</p>
+                </div>
+                <div class="skill-card">
+                    <h3>AWS • Docker</h3>
+                    <p>Cloud Computing</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Figma</h3>
+                    <p>UI/UX Design</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <a href="https://xoxonicx.github.io/" target="_blank" rel="noopener">
+                        <img src="images/Canonpage.jpg" alt="A02 Project" class="project-img">
+                    </a>
+                    <div class="project-content">
+                        <h3 class="project-title">A02</h3>
+                        <p class="project-tech">
+                            <i class=""></i> CANON PowerShot G7 X Mark III
+                        </p>
+                        <div class="project-links">
+                            <a href="https://xoxonicx.github.io/" target="_blank" rel="noopener">
+                                <i class="fab fa-github"></i> Link
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <a href="#" target="_blank" rel="noopener">
+                        <img src="images/task-management.png" alt="Task Management App" class="project-img">
+                    </a>
+                    <div class="project-content">
+                        <h3 class="project-title">Task Management App</h3>
+                        <p class="project-tech">
+                            <i class="fas fa-mobile-alt"></i> Next.js • Firebase
+                        </p>
+                        <div class="project-links">
+                            <a href="#" target="_blank" rel="noopener">
+                                <i class="fab fa-github"></i> Link
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <a href="#" target="_blank" rel="noopener">
+                        <img src="images/weather.png" alt="Weather Dashboard" class="project-img">
+                    </a>
+                    <div class="project-content">
+                        <h3 class="project-title">Weather Dashboard</h3>
+                        <p class="project-tech">
+                            <i class="fas fa-cloud-sun"></i> Vue.js • API Integration
+                        </p>
+                        <div class="project-links">
+                            <a href="#" target="_blank" rel="noopener">
+                                <i class="fab fa-github"></i> Link
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience">
+            <h2>Experience & Education</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Diploma in Information Technology</h3>
+                        <p>2nd Year Student • 2023 - Present</p>
+                        <p>Currently pursuing IT diploma with focus on web development, software engineering, and cloud computing.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Freelance Projects</h3>
+                        <p>Self Employed • 2022 - Present</p>
+                        <p>Developed personal projects and contributed to open source repositories while learning modern development practices.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>IT Fundamentals</h3>
+                        <p>Programming Foundations • 2022</p>
+                        <p>Completed foundational courses in programming, data structures, and database management.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div> 
+    <footer class="main-footer">
+        <p>&copy; Nica Mae Villanueva. 2026</p>
+    </footer>
+</body>
+</html>
