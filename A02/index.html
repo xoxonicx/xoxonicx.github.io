@@ -166,7 +166,7 @@
             align-items: center;
             justify-content: center; 
             margin: 0 auto 2rem auto;
-            gap: 20px;
+            /* In-adjust ang gap dahil wala na ang arrows */
         }
 
         .main-view-container {
@@ -185,29 +185,7 @@
             filter: drop-shadow(0 15px 25px rgba(0,0,0,0.1));
         }
 
-        .nav-arrow {
-            flex-shrink: 0;
-            width: 55px;
-            height: 55px;
-            background: white;
-            border: 1px solid #eee;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 10;
-            transition: all 0.3s ease;
-            font-size: 1.3rem;
-            color: #333;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-        }
-
-        .nav-arrow:hover {
-            background: #f70d1a;
-            color: white;
-            border-color: #f70d1a;
-        }
+        /* Tinanggal ang .nav-arrow styles dito */
 
         .thumbnail-row {
             display: flex;
@@ -389,19 +367,13 @@
             <h2 class="section-title">Product Gallery</h2>
             
             <div class="main-gallery-wrapper">
-                <div class="nav-arrow arrow-left d-none d-md-flex" onclick="moveGallery(-1)">&#10094;</div>
                 <div class="main-view-container">
                     <img id="mainProductView" src="/A02/FrontView.png" alt="Canon G7X Mark III Main">
                 </div>
-                <div class="nav-arrow arrow-right d-none d-md-flex" onclick="moveGallery(1)">&#10095;</div>
             </div>
 
             <div class="thumbnail-row">
-                <div class="thumb-card active" onclick="changeView('A02/FrontView.png', this, 0)">   'A02/FrontView.png',
-            'A02/Front+SlantView.png',
-            'A02/TopView.png',
-            'A02/BackView.png',
-            'A02/Front+Slant+w+ScreenView.png'
+                <div class="thumb-card active" onclick="changeView('A02/FrontView.png', this, 0)"> 
                     <img src="/A02/FrontView.png" alt="Front">
                     <span>Front</span>
                 </div>
@@ -559,18 +531,17 @@
             element.classList.add('active');
         }
 
-        function updateGallery(direction) {
-    const imgElement = document.querySelector('.product-image'); 
-    
-    if (direction === 'next') {
-        currentIndex = (currentIndex + 1) % images.length;
-    } else {
-        currentIndex = (currentIndex - 1 + images.length) % images.length;
-    }
-    
-    // Update the source
-    imgElement.src = images[currentIndex];
-}
+        /* Pinanatili ang moveGallery para sa compatibility pero wala na itong tatawag na button */
+         function moveGallery(direction) {
+            currentImgIndex += direction;
+            if (currentImgIndex >= galleryImages.length) currentImgIndex = 0;
+            if (currentImgIndex < 0) currentImgIndex = galleryImages.length - 1;
+            
+            const thumbnails = document.querySelectorAll('.thumb-card');
+            
+            changeView(galleryImages[currentImgIndex], thumbnails[currentImgIndex], currentImgIndex);
+        }
+        
         function scrollToSection(sectionId) {
             const element = document.getElementById(sectionId);
             if (element) {
