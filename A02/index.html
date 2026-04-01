@@ -397,7 +397,11 @@
             </div>
 
             <div class="thumbnail-row">
-                <div class="thumb-card active" onclick="changeView('A02/FrontView.png', this, 0)">
+                <div class="thumb-card active" onclick="changeView('A02/FrontView.png', this, 0)">   'A02/FrontView.png',
+            'A02/Front+SlantView.png',
+            'A02/TopView.png',
+            'A02/BackView.png',
+            'A02/Front+Slant+w+ScreenView.png'
                     <img src="/A02/FrontView.png" alt="Front">
                     <span>Front</span>
                 </div>
@@ -555,16 +559,18 @@
             element.classList.add('active');
         }
 
-        function moveGallery(direction) {
-            currentImgIndex += direction;
-            if (currentImgIndex >= galleryImages.length) currentImgIndex = 0;
-            if (currentImgIndex < 0) currentImgIndex = galleryImages.length - 1;
-            
-            const thumbnails = document.querySelectorAll('.thumb-card');
-            
-            changeView(galleryImages[currentImgIndex], thumbnails[currentImgIndex], currentImgIndex);
-        }
-
+        function updateGallery(direction) {
+    const imgElement = document.querySelector('.product-image'); 
+    
+    if (direction === 'next') {
+        currentIndex = (currentIndex + 1) % images.length;
+    } else {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+    }
+    
+    // Update the source
+    imgElement.src = images[currentIndex];
+}
         function scrollToSection(sectionId) {
             const element = document.getElementById(sectionId);
             if (element) {
